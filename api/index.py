@@ -28,7 +28,6 @@ def about():
     # page = request.args.get('page', default=1, type=int)
     # filter = request.args.get('filter', default='*', type=str)
 
-    time.sleep(3)
     my_obj = MyPydanticObject(field1=123, field2=f"{msg}")
     json_data = my_obj.model_dump_json() # Use .json() for Pydantic V1
     return Response(json_data, mimetype='application/json')
