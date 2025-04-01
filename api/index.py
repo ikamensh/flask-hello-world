@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, request
 from pydantic import BaseModel
 import sys
 from pathlib import Path
@@ -24,6 +24,10 @@ class MyPydanticObject(BaseModel):
 
 @app.route('/about')
 def about():
+    # We are supposed to get arguments like this:
+    # page = request.args.get('page', default=1, type=int)
+    # filter = request.args.get('filter', default='*', type=str)
+
     time.sleep(3)
     my_obj = MyPydanticObject(field1=123, field2=f"{msg}")
     json_data = my_obj.model_dump_json() # Use .json() for Pydantic V1
